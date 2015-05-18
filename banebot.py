@@ -86,6 +86,7 @@ class LogBot(irc.IRCClient):
             return
 
         for trig in self.batkey.keys():
+            #if msg has the secret trigger, bot will PM the user with the secret password
             if trig in msg.lower():
                 thekey = self.batkey[trig]
                 self.msg(user, thekey)
@@ -93,6 +94,7 @@ class LogBot(irc.IRCClient):
                 break
 
         for trigger in self.quotes.keys():
+            #if the msg has a trigger, will display the response to the room
             if trigger in msg.lower():
                 quote = self.quotes[trigger]
                 msg = "%s: %s" % (user, quote)
